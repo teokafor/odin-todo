@@ -2,21 +2,18 @@
 import { createProject, removeProject, getProjects } from "./project.js";
 import { createTodo, getTodo, getTodos, removeTodo } from "./todo.js";
 import { json } from './jsonController.js';
-
-import { menuOptions } from "./renderConsole.js";
+import { drawProjects, drawEmpty } from "./renderController.js";
 // Should be the one to call either renderConsole for prompts or renderPage for GUI.
 
 
-// createProject('My test project 1');
+createProject('Default');
+createProject('test');
 // createProject('2nd test');
-// createTodo('2nd test', 'test 40', 'return me only!', '2222', 1);
-// createTodo('2nd test', 'test 2', 'dont show me!', '2222', 1);
+createTodo('Default', 'Finish this project', 'I think the bones are done(ish)', '2025-01-29', 3);
 
-// createTodo('My test project 1', 'Todo title!', 'testin', '2001', 6);
-// createTodo('2nd test', 'test 420', 'im still here!', '2222', 1);
+drawProjects();
 
-// removeTodo('2nd test', 'test 2');
-// removeProject('My test project 1');
+// drawEmpty();
 
 // console.log(JSON.stringify(json));
 
