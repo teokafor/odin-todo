@@ -2,6 +2,9 @@ import { json } from './jsonController.js';
 
 function createProject(projectName) {
     json[projectName] = [];
+
+    // Make this a factory that returns into jsonController.js -> index.js instead?
+    // Same for todo.js as well.
 }
 
 
