@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+}
+
+#content {
+    display: grid;
+    grid-template-rows: repeat(3, 700px);
+    grid-template-columns: repeat(5, 300px);
+    gap: 32px;
+    margin: 32px;
+}
+
+/* for project boxes */
+#content > div {
+    border: solid 1px black;
+}
+
+.project-drawer {
+    background-color: rebeccapurple;
+    width: 243px;
+    height: 20px;
+}
