@@ -7,8 +7,10 @@ function createProject(projectName) {
     // Same for todo.js as well.
 }
 
+const removeProject = (projectName) => delete json[projectName];
 
-export { createProject };
+
+export { createProject, removeProject };
 
 /* 
 // Create the JSON structure

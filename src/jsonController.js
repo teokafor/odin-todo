@@ -1,1 +1,1 @@
-export const json = {};
+export let json = {};

@@ -8,8 +8,8 @@ function createTodo (projectName, title, desc, endDate, priority) {
         endDate, 
         priority
     });    
-
-
 }
 
-export { createTodo };
+const removeTodo = (projectName, todoTitle) => json[projectName] = json[projectName].filter(todo => todo.title !== todoTitle);
+
+export { createTodo, removeTodo };
