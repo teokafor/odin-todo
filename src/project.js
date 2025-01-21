@@ -9,8 +9,15 @@ function createProject(projectName) {
 
 const removeProject = (projectName) => delete json[projectName];
 
+// function renameProject (projectName) {
 
-export { createProject, removeProject };
+// }
+
+function getProjects () {
+    return json;
+}
+
+export { createProject, removeProject, getProjects };
 
 /* 
 // Create the JSON structure
