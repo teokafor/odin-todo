@@ -27,6 +27,23 @@ function drawProject(projectName) {
     let drawer = document.createElement('div');
     drawer.classList.add('project-drawer');    
 
+    // Build drawer controls & associated buttons:
+    let drawerControls = document.createElement('div');
+    drawerControls.classList.add('drawer-controls');
+
+    let backButton = document.createElement('button');
+    backButton.textContent = '⬅';
+    backButton.addEventListener('click', () => drawer.parentElement.removeChild(drawer));
+    drawerControls.appendChild(backButton);
+
+    let newButton = document.createElement('button');
+    newButton.textContent = '+';
+    drawerControls.appendChild(newButton);
+
+    drawer.appendChild(drawerControls);
+
+
+    // Populate drawer with todo elements:
     for (let todo in json[projectName]) {
         let todoItem = document.createElement('div');        
 
@@ -63,6 +80,11 @@ function drawProject(projectName) {
         drawer.appendChild(todoItem);
     }
     document.body.appendChild(drawer);
+}
+
+
+function drawTodoDialog() {
+    
 }
 
 

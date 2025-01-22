@@ -27,7 +27,6 @@
     align-items: center;
     top: 0;
     right: 0;
-    padding: 12px 0;
 }
 
 
@@ -45,4 +44,32 @@
 
 .todo-buttons {
     display: flex;
+}
+
+.drawer-controls {
+    height: 100px;
+    background-color: red;
+    align-self: stretch;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.drawer-controls button {
+    height: 48px;
+    width: 48px;
+}
+
+.todo-dialog {
+    border: solid 1px black;
+    border-radius: 4px;
+    width: 400px;
+    display: flex;
+    gap: 12px;
+    padding:12px 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
