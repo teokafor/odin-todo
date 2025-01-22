@@ -10,7 +10,10 @@ function createTodo (projectName, title, desc, endDate, priority) {
     });    
 }
 
-const removeTodo = (projectName, todoTitle) => json[projectName] = json[projectName].filter(todo => todo.title !== todoTitle);
+const removeTodo = (projectName, todoTitle) => {
+    json[projectName] = json[projectName].filter(todo => todo.title !== todoTitle);
+        
+};
 
 function getTodos(projectName) {
     return json[projectName];

@@ -1,9 +1,10 @@
 import { json } from './jsonController.js';
-import { getTodos } from './todo.js';
+import { getTodos, removeTodo } from './todo.js';
 const content = document.querySelector('#content');
 
 function drawProjects() {
     for(let project in json) {
+        
         let addition = document.createElement('div');
         addition.textContent = project;
 
@@ -24,11 +25,22 @@ function drawProjects() {
 
 function drawProject(projectName) {
     let drawer = document.createElement('div');
-    drawer.classList.add('project-drawer');
+    drawer.classList.add('project-drawer');    
 
     for (let todo in json[projectName]) {
-        let todoItem = document.createElement('div');
+        let todoItem = document.createElement('div');        
 
+        let yesButton = document.createElement('button');
+        let noButton  = document.createElement('button');
+
+        yesButton.addEventListener('click', () => removeTodo(projectName, json[projectName][todo].title));
+        yesButton.addEventListener('click', () => drawEmpty());
+        noButton.addEventListener('click', () => removeTodo(projectName, json[projectName][todo].title));
+        noButton.addEventListener('click', () => drawEmpty());
+
+        yesButton.textContent="✓"
+        noButton.textContent="✕"
+        
         todoItem.innerHTML = 
         `<div class="todo-shell">
             <div class="todo-left">
@@ -39,11 +51,15 @@ function drawProject(projectName) {
             <div class="todo-right">
                 <div>Created: 2022-10-07</div>
                 <div class="todo-buttons">
-                    <div>YeaButton</div>
-                    <div>NayButton</div>
+                    
                 </div>
             </div>
         </div>`;
+
+        let buttonsGroup = todoItem.querySelector('.todo-buttons');
+        buttonsGroup.appendChild(yesButton);
+        buttonsGroup.appendChild(noButton);
+
         drawer.appendChild(todoItem);
         document.body.appendChild(drawer);
     }
@@ -53,6 +69,15 @@ function drawProject(projectName) {
 function drawEmpty() {
     while(content.lastChild) {
         content.removeChild(content.firstChild);
+    }
+    drawProjects();
+
+    // clear drawer if it exists
+    let drawer = document.querySelector('.project-drawer');
+    if(drawer) {
+        while(drawer.lastChild) {
+            drawer.removeChild(drawer.firstChild);
+        }
     }
 }
 
