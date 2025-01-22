@@ -79,6 +79,7 @@ function drawEmpty(projectName) {
         while(drawer.lastChild) {
             drawer.removeChild(drawer.firstChild);
         }
+        drawer.parentElement.removeChild(drawer);
         drawProject(projectName);
     }
 }
