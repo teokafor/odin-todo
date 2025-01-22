@@ -34,9 +34,9 @@ function drawProject(projectName) {
         let noButton  = document.createElement('button');
 
         yesButton.addEventListener('click', () => removeTodo(projectName, json[projectName][todo].title));
-        yesButton.addEventListener('click', () => drawEmpty());
+        yesButton.addEventListener('click', () => drawEmpty(projectName));
         noButton.addEventListener('click', () => removeTodo(projectName, json[projectName][todo].title));
-        noButton.addEventListener('click', () => drawEmpty());
+        noButton.addEventListener('click', () => drawEmpty(projectName));
 
         yesButton.textContent="✓"
         noButton.textContent="✕"
@@ -66,7 +66,8 @@ function drawProject(projectName) {
 }
 
 
-function drawEmpty() {
+// projectName only neds to be used when redrawing the drawer.
+function drawEmpty(projectName) {
     while(content.lastChild) {
         content.removeChild(content.firstChild);
     }
@@ -78,6 +79,7 @@ function drawEmpty() {
         while(drawer.lastChild) {
             drawer.removeChild(drawer.firstChild);
         }
+        drawProject(projectName);
     }
 }
 
