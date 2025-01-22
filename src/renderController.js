@@ -61,8 +61,8 @@ function drawProject(projectName) {
         buttonsGroup.appendChild(noButton);
 
         drawer.appendChild(todoItem);
-        document.body.appendChild(drawer);
     }
+    document.body.appendChild(drawer);
 }
 
 
