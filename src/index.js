@@ -9,6 +9,12 @@ import "./styles.css";
 
 createProject('Default');
 createProject('test');
+createProject('test62');
+createProject('test5');
+createProject('test3');
+createProject('test32');
+createProject('test2');
+
 // createProject('2nd test');
 createTodo('Default', 'Finish this project', 'I think the bones are done(ish)', '2025-01-29', 3);
 createTodo('Default', 'weqw', 'I think the bones are done(ish)', '2025-01-29', 3);
