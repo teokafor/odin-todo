@@ -1,5 +1,5 @@
 import { json } from './jsonController.js';
-import { getTodos, removeTodo } from './todo.js';
+import { getTodos, removeTodo, createTodo } from './todo.js';
 const content = document.querySelector('#content');
 
 function drawProjects() {
@@ -38,6 +38,7 @@ function drawProject(projectName) {
 
     let newButton = document.createElement('button');
     newButton.textContent = '+';
+    newButton.addEventListener('click', () => drawTodoDialog(projectName));
     drawerControls.appendChild(newButton);
 
     drawer.appendChild(drawerControls);
@@ -83,8 +84,32 @@ function drawProject(projectName) {
 }
 
 
-function drawTodoDialog() {
+function drawTodoDialog(projectName) {
+    let dialog = document.createElement('div');
+    dialog.classList.add('todo-dialog');
+
+    dialog.innerHTML = `
+        <div>Add new task...</div><div>Title:</div><input type="text" id="todo-input-title">
+        <div>Description:</div><input type="text" id="todo-input-desc">
+        `;
     
+    
+    // Buttons:
+    let createButton = document.createElement('button');
+    createButton.textContent = 'Create';
+
+    let titleValue = dialog.querySelector('#todo-input-title');
+    let descValue = dialog.querySelector('#todo-input-desc');
+
+    createButton.addEventListener('click', () => createTodo(projectName, titleValue.value, descValue.value, 0, 0));
+    dialog.appendChild(createButton);
+
+    let cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Cancel';
+    cancelButton.addEventListener('click', () => dialog.parentElement.removeChild(dialog));
+    dialog.appendChild(cancelButton);
+    
+    document.body.appendChild(dialog);
 }
 
 
