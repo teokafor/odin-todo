@@ -102,6 +102,9 @@ function drawTodoDialog(projectName) {
     let descValue = dialog.querySelector('#todo-input-desc');
 
     createButton.addEventListener('click', () => createTodo(projectName, titleValue.value, descValue.value, 0, 0));
+    createButton.addEventListener('click', () => drawEmpty(projectName));
+    createButton.addEventListener('click', () => dialog.parentElement.removeChild(dialog));
+
     dialog.appendChild(createButton);
 
     let cancelButton = document.createElement('button');
