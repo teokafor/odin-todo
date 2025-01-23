@@ -1,4 +1,5 @@
 import { json } from './jsonController.js';
+import { createProject } from './project.js';
 import { getTodos, removeTodo, createTodo } from './todo.js';
 const content = document.querySelector('#content');
 
@@ -24,8 +25,12 @@ function drawProjects() {
 }
 
 function drawProject(projectName) {
+    // Clear drawer if it already exists
+    if(document.getElementById('project-drawer')) document.getElementById('project-drawer').parentElement.removeChild(document.getElementById('project-drawer')); 
+    
+
     let drawer = document.createElement('div');
-    drawer.classList.add('project-drawer');    
+    drawer.id = 'project-drawer';    
 
     // Build drawer controls & associated buttons:
     let drawerControls = document.createElement('div');
@@ -115,6 +120,31 @@ function drawTodoDialog(projectName) {
     document.body.appendChild(dialog);
 }
 
+const newProject = document.querySelector('#proj-btn');
+newProject.addEventListener('click', () => drawProjectDialog());
+
+function drawProjectDialog() {
+    let dialog = document.createElement('div');
+    dialog.classList.add('todo-dialog');
+
+    dialog.innerHTML = '<div>Add new project...</div><div>Title:</div><input type="text" id="project-input-title">';
+    let createButton = document.createElement('button');
+    createButton.textContent = 'Create';
+    let titleValue = dialog.querySelector('#project-input-title');
+    createButton.addEventListener('click', () => createProject(titleValue.value));
+    createButton.addEventListener('click', () => drawEmpty());
+    createButton.addEventListener('click', () => dialog.parentElement.removeChild(dialog));
+    dialog.appendChild(createButton);
+    
+    let cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Cancel';
+    cancelButton.addEventListener('click', () => dialog.parentElement.removeChild(dialog));
+    dialog.appendChild(cancelButton);
+    
+    document.body.appendChild(dialog);
+
+}
+
 
 // projectName only neds to be used when redrawing the drawer.
 function drawEmpty(projectName) {
@@ -124,7 +154,7 @@ function drawEmpty(projectName) {
     drawProjects();
 
     // clear drawer if it exists
-    let drawer = document.querySelector('.project-drawer');
+    let drawer = document.querySelector('#project-drawer');
     if(drawer) {
         while(drawer.lastChild) {
             drawer.removeChild(drawer.firstChild);

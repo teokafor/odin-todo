@@ -16,7 +16,7 @@
     border-radius: 5px;
 }
 
-.project-drawer {
+#project-drawer {
     background-color: rebeccapurple;
     width: 500px;
     height: 100vh;
